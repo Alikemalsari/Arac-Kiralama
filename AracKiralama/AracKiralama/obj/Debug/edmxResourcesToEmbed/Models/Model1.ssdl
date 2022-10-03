@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AracKiralamaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AracBilgileris">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AracAdi" Type="nvarchar(max)" />
+    <Property Name="AracBilgisi" Type="nvarchar(max)" />
+    <Property Name="Fiyati" Type="int" Nullable="false" />
+    <Property Name="AracResmi" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Kiralayans">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsimSoyisim" Type="nvarchar(max)" />
+    <Property Name="Adres" Type="nvarchar(max)" />
+    <Property Name="TCKN" Type="float" />
+    <Property Name="Tel1" Type="float" />
+    <Property Name="Tel2" Type="float" />
+    <Property Name="EMail" Type="nvarchar(max)" />
+    <Property Name="KiralayacagiArac" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Logins">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KullaniciAdi" Type="nvarchar(max)" />
+    <Property Name="Sifre" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityContainer Name="AracKiralamaDBModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AracBilgileris" EntityType="Self.AracBilgileris" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kiralayans" EntityType="Self.Kiralayans" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AracKiralama.Models.Kiralayan>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+   
+</head>
+<body>
+    <table class="table" id="table">
+       
+        <thead>
+            <tr>
+                <th scope="col">İsim-Soyisim</th>
+                <th scope="col">Adres</th>
+                <th scope="col">TC Kimlik</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">Telefon</th>
+                <th scope="col">E-Mail</th>
+                <th scope="col">Kiraladığı Araç</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.IsimSoyisim</td>
+                <td>@item.Adres</td>
+                <td>@item.TCKN</td>
+                <td>@item.Tel1</td>
+                <td>@item.Tel2</td>
+                <td>@item.EMail</td>
+                <td>@item.KiralayacagiArac</td>
+
+            </tr>
+            }
+
+
+        </tbody>
+    </table>
+
+
+</body>
+</html>
+

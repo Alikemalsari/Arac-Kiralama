@@ -1,0 +1,93 @@
+﻿@using AracKiralama.Models
+@model  AracBilgileriViewModel
+
+@{
+    ViewBag.Title = "SA-CAR Kiralama İşlemleri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    div {
+        text-align: center;
+    }
+
+    .div1 {
+        background-color: white;
+        margin-left: 350px;
+        margin-top: 50px;
+        height: 450px;
+        width: 400px;
+        border-style: solid;
+        border-color: black;
+    }
+</style>
+
+<div class="div1">
+    <div class="kt-portlet">
+
+        <!--begin::Form-->
+
+        @using (Html.BeginForm("Index", "Kiralama", FormMethod.Post, new { @class = "kt-form", role = "form" }))
+        {
+            <div class="kt-portlet__body">
+
+                @Html.HiddenFor(x => x.Id)
+
+                <div class="fc-body">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "Lütfen Hatalarınızı Gideriniz!", new { @class = "alert alert-warning" })
+
+                    <div class="form-group row">
+                        @Html.LabelFor(m => m.AracAdi, new { @class = "col-4 col-form-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.AracAdi, new { @disabled = "disabled" })
+                            @Html.ValidationMessageFor(m => m.AracAdi, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => m.AracBilgisi, new { @class = "col-4 col-form-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(m => m.AracBilgisi, new { @disabled = "disabled" })
+                            @Html.ValidationMessageFor(m => m.AracBilgisi, "", new { @class = "form-text text-danger" })
+                        </div>
+                    </div>
+
+                    <input type="text" name="IsimSoyisim" placeholder="İsim-Soyisim" required />
+                    <br />
+                    <br />
+                    <input type="text" name="Adres" placeholder="Adres" required />
+                    <br />
+                    <br />
+                    <input name="TCKN" placeholder="TC Kimlik No" required />
+                    <br />
+                    <br />
+                    <input type="tel" name="Tel1" placeholder="Telefon 1" required />
+                    <br />
+                    <br />
+                    <input name="Tel2" type="tel" placeholder="Telefon 2" required />
+                    <br />
+                    <br />
+                    <input name="EMail" type="email" placeholder="E-Mail" required />
+                    <br />
+                    <br />
+                    
+
+                </div>
+
+            </div>
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <input type="submit" class="btn btn-success btn-elevate btn-pill btn-elevate-air" value="Kirala" />
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
+
+
+
+
+
+

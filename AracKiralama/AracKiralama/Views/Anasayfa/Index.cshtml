@@ -1,0 +1,78 @@
+﻿
+@model IEnumerable<AracKiralama.Models.AracBilgileri>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "SA-CAR";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+
+        .container {
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 270px;
+            height: 400px;
+            margin: 10px;
+            border-radius: 15px;
+        }
+
+
+        .card-image {
+            background-color: aqua;
+            margin-bottom: 15px;
+            background-size: cover;
+            border-radius: 15px 15px 0 0;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        @foreach (var item in Model)
+        {<div class="card">
+    <div class="card-img" style="width: 18rem;">
+        <img style="height:170px;" src="@Url.Content(item.AracResmi)" class="card-img-top" alt="...">
+    </div>
+
+    <h5 class="card-title">@item.AracAdi</h5>
+    <p class="card-text">@item.AracBilgisi</p>
+    <button class="btn btn-success" disabled>@item.Fiyati ₺</button>
+    <a href="/Kiralama/Index?Id=@item.Id" class="btn btn-primary">Kirala</a>
+    
+
+
+</div>
+        }
+    </div>
+
+</body>
+</html>
+

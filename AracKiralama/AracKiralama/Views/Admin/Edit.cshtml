@@ -1,0 +1,124 @@
+﻿@using AracKiralama.Models
+@model  AracBilgileriViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "SA-CAR Düzenle";
+}
+
+@Html.ValidationSummary()
+
+<script>
+    function Cancel() {
+        location.href = '@Url.Action("Index","Admin")';
+    }
+</script>
+
+@*<div class="fc-header" style="text-align:center; padding:20px;">
+        <h3 class="fc-title">Personel Düzenle</h3>
+    </div>*@
+
+<!--begin::Portlet-->
+<div class="kt-portlet">
+    
+
+    <!--begin::Form-->
+
+    @using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="kt-portlet__body">
+
+            @Html.HiddenFor(x => x.Id)
+
+            <div class="fc-body">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "Lütfen Hatalarınızı Gideriniz!", new { @class = "alert alert-warning" })
+
+                <div class="form-group row">
+                    @Html.LabelFor(m => m.AracAdi, new { @class = "col-4 col-form-label" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.AracAdi, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.AracAdi, "", new { @class = "form-text text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(m => m.AracBilgisi, new { @class = "col-4 col-form-label" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.AracBilgisi, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.AracBilgisi, "", new { @class = "form-text text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(m => m.Fiyati, new { @class = "col-4 col-form-label" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Fiyati, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Fiyati, "", new { @class = "form-text text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(m => m.AracResmi, new { @class = "col-4 col-form-label" })
+                    <div class="col-md-4">
+
+                        <input id="imgfile" name="imgfile" type="file" />
+                    </div>
+                </div>
+
+            </div>
+
+            @*<div class="fc-footer-toolbar" style="text-align:center;">
+                    <input type="submit" class="btn btn-success btn-elevate btn-pill btn-elevate-air" value="Kaydet" />
+                    <input type="button" onclick="Cancel()" class="btn btn-danger btn-elevate btn-pill btn-elevate-air" style="background-color: #f54242; border-color: #f54242; color:#ffffff;" value="İptal" />
+                </div>*@
+
+        </div>
+        <div class="kt-portlet__foot">
+            <div class="kt-form__actions">
+                <input type="submit" class="btn btn-success btn-elevate btn-pill btn-elevate-air" value="Kaydet" />
+                <input type="button" onclick="Cancel()" class="btn btn-danger btn-elevate btn-pill btn-elevate-air" style="background-color: #f54242; border-color: #f54242; color:#ffffff;" value="İptal" />
+            </div>
+        </div>
+
+    }
+    <!--end::Form-->
+</div>
+
+
+@section scripts{
+
+    <script>
+
+    var success = '@TempData["succes"]';
+
+    // self executing function here
+    (function () {
+
+
+
+
+
+        if (success) {
+
+
+
+            swal.fire({
+                title: 'Tamamlandı!',
+                text: 'Kaydınız Başarılı Şekilde Güncellendi!',
+                type: 'success',
+                showConfirmButton: false,
+                timer: 1500,
+                onOpen: function () {
+                    swal.showLoading()
+                }
+            })
+
+        }
+
+
+
+    })();
+    </script>
+
+
+
+
+}
+
